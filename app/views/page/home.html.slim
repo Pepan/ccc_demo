@@ -1,0 +1,7 @@
+h1 = t 'app.main.title'
+p = present_user.name
+
+= link_to t('helpers.submit.session.submit'), new_session_path unless current_user
+= link_to t('app.nav.logout'), session_path(current_user), class: 'dropdown-item', method: 'delete', data: {confirm: t('app.nav.user.log_out_confirmation')} if current_user
+br
+= link_to 'see something', page_something_path if can? :read, :something

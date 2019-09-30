@@ -1,0 +1,30 @@
+doctype html
+html[lang="#{I18n.locale}"]
+  head
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    meta charset="utf-8"
+
+    title
+      = content_for?(:title) ? yield(:title) : default_title
+
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : default_description}"
+    == favicon_link_tag
+
+    == csrf_meta_tags
+    == csp_meta_tag
+
+    link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet"
+    == stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    == stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    == javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+    == yield(:head)
+
+  body class="public #{ controller.controller_name } #{ controller.action_name }"
+    header
+
+    main[role="main"]
+      == yield(:page_upper)
+      == flash_message
+      == yield
+    footer

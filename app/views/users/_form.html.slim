@@ -1,0 +1,24 @@
+= form_with model: @user, local: true do |form|
+  == render partial: 'shared/form_errors', object: form.object.try(:errors)
+
+  div.form-group
+    = form.label :login
+    = form.email_field :login, class: 'form-control', 'aria-describedby': "loginHelp", required: true
+    small.form-text.text-muted#loginHelp = t('app.users.new.form.login_note')
+
+  div.form-group
+    = form.label :email
+    = form.email_field :email, class: 'form-control', 'aria-describedby': "emailHelp", required: true
+    small.form-text.text-muted#emailHelp = t('app.users.new.form.email_note')
+
+  div.form-group
+    = form.label :password
+    = form.password_field :password, class: 'form-control', 'aria-describedby': "passwordHelp", required: true
+    small.form-text.text-muted#passwordHelp = t('app.users.new.form.password_note')
+
+  div.form-group
+    = form.label :password_confirmation
+    = form.password_field :password_confirmation, class: 'form-control', required: true
+
+
+  .actions = form.submit class: "btn btn-primary"

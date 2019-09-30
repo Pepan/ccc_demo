@@ -1,0 +1,26 @@
+h1 = t 'app.sessions.new.title'
+p.text-muted = t 'app.sessions.new.description'
+
+.row.justify-content-md-center
+  .card
+    .card-header = t('app.sessions.new.form.title')
+
+    .card-body
+      = form_with scope: :session, url: sessions_path, local: true do |form|
+        .form-group
+          = form.label :email, class: 'sr-only'
+          = form.email_field :email, class: "form-control", 'aria-describedby': "emailHelp", placeholder: t('app.sessions.new.form.email_placeholder')
+
+        .form-group
+          = form.label :password, class: 'sr-only'
+          = form.password_field :password, class: "form-control", 'aria-describedby': "passwordHelp", placeholder: t('app.sessions.new.form.password_placeholder')
+
+        .form-group
+          .form-check
+            = form.check_box :remember_me, class: "form-check-input", id: "loginRemember"
+            = form.label :remember_me, class: 'form-check-label'
+
+        = form.submit class: "btn btn-primary"
+
+    .card-footer.text-muted
+      = link_to t('app.nav.registration'), new_user_path

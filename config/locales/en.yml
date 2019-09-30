@@ -31,3 +31,28 @@
 
 en:
   hello: "Hello world"
+  app:
+    page:
+      home:
+        title: "Home"
+        desc: "Testing Home page"
+
+    main:
+      title: "Test CanCanCan app"
+    sessions:
+      new:
+        form:
+          email_placeholder: "Your login email"
+          password_placeholder: "Your password"
+      created: "You are signed in!"
+      destroyed: "You are signed out!"
+
+    nav:
+      logout: "Log-out"
+      user:
+        log_out_confirmation: "Are You sure to logout?"
+
+  helpers:
+    submit:
+      session:
+        submit: Log-in
