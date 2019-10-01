@@ -1,0 +1,23 @@
+h1 = t 'app.users.index.title'
+table
+  thead
+    tr
+      th = '#'
+      th = t 'app.users.table.nick'
+      th = t 'app.users.table.created_at'
+      th = t 'app.users.table.sign_in_count'
+      th
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.nick
+        td = l user.created_at, format: :long
+        td = user.sign_in_count
+        td.actions
+          = link_to t('app.nav.helpers.show'), user if can? :read, user
+          = link_to t('app.nav.helpers.edit'), [:edit, user] if can? :update, user
+          = link_to t('app.nav.helpers.destroy'), user, method: :delete, data: { confirm: t('app.nav.helpers.destroy_are_you_sure') } if can? :destroy, user
+
+hr
+= link_to t('app.nav.helpers.home'), root_path

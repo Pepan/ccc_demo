@@ -8,11 +8,12 @@ class Ability
 
     if user.role_names.include? :quest
       no_admin_access_actions
+      can [:new, :create, :confirm], User, id: user.id
     end
 
     if user.role_names.include? :user
       no_admin_access_actions
-      can [:read, :edit, :update, :trophy_case], User, id: user.id
+      can [:read, :edit, :update], User, id: user.id
       can :read, :something
     end
 

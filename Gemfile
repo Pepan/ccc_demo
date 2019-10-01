@@ -42,6 +42,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # dev boosters
+  gem 'active_record_query_trace'
   gem 'debase', :github => 'denofevil/debase'
   gem 'ruby-debug-ide', :github => 'ruby-debug/ruby-debug-ide'
   gem 'rubocop'

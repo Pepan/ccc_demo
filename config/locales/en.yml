@@ -31,6 +31,16 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M:%S"
+      short: "%d %b %H:%M"
   app:
     page:
       home:
@@ -51,6 +61,20 @@ en:
       logout: "Log-out"
       user:
         log_out_confirmation: "Are You sure to logout?"
+      helpers:
+        show: "Show"
+        edit: "Edit"
+        destroy: "Destroy"
+        destroy_are_you_sure: "Ate you sure you want to destroy this item?"
+        home: "Home"
+    users:
+      index:
+        title: "Users list"
+        desc: "Users list"
+      table:
+        nick: "Nick"
+        created_at: "Created at"
+        sign_in_count: "Sign In Count"
 
   helpers:
     submit:

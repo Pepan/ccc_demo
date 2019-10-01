@@ -5,3 +5,6 @@ p = present_user.name
 = link_to t('app.nav.logout'), session_path(current_user), class: 'dropdown-item', method: 'delete', data: {confirm: t('app.nav.user.log_out_confirmation')} if current_user
 br
 = link_to 'see something', page_something_path if can? :read, :something
+br
+/ this is little tricky because :index is alias for :read - so if user have read enabled atleast to one record he can index records
+= link_to 'see users list', users_path if can? :index, User

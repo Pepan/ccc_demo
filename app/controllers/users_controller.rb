@@ -1,16 +1,23 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit update destroy confirm]
+  before_action :set_user, only: %i[confirm]
+  skip_before_action :check_admin_access, only: [:new, :create, :confirm]
+
+  def index
+    @users = User.accessible_by(current_ability, :update)
+  end
 
   # GET /users/new
   def new
     @user = User.new
   end
 
+  def show
+  end
+
   # GET /users/1/edit
   def edit
-    authorize! :update, @user
   end
 
   # POST /users
@@ -28,7 +35,6 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    authorize! :update, @user
     if @user.update(user_params)
       redirect_to [:edit, @user], success: t("app.#{controller_name}.updated")
     else
@@ -38,7 +44,6 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    authorize! :destroy, @user
     log_out if @user == current_user
     @user.destroy
     redirect_to root_path, warning: t("app.#{controller_name}.destroyed")

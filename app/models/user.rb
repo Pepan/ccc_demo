@@ -13,11 +13,11 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :roles, reject_if: :all_blank
 
   def admin?
-    @admin ||= has_any_role?(:admin, :super_admin)
+    defined?(@admin) ? @admin : (@admin = has_any_role?(:admin, :super_admin))
   end
 
   def guest?
-    @guest ||= has_role?(:guest)
+    defined?(@guest) ? @guest : (@guest = has_role?(:guest))
   end
 
   def to_s
